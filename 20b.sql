@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(t.title) AS complete_downey_ironman_movie
 FROM complete_cast AS cc,
      comp_cast_type AS cct1,

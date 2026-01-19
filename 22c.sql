@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(cn.name) AS movie_company,
        MIN(mi_idx.info) AS rating,
        MIN(t.title) AS western_violent_movie

@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(cn.name) AS company_name,
        MIN(lt.link) AS link_type,
        MIN(t.title) AS german_follow_up

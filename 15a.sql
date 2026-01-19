@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(mi.info) AS release_date,
        MIN(t.title) AS internet_movie
 FROM aka_title AS at,

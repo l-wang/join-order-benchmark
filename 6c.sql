@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(k.keyword) AS movie_keyword,
        MIN(n.name) AS actor_name,
        MIN(t.title) AS marvel_movie

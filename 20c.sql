@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(n.name) AS cast_member,
        MIN(t.title) AS complete_dynamic_hero_movie
 FROM complete_cast AS cc,

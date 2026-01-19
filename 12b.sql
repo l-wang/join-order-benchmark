@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(mi.info) AS budget,
        MIN(t.title) AS unsuccsessful_movie
 FROM company_name AS cn,

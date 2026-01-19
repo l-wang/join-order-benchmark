@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(an.name) AS alternative_name,
        MIN(chn.name) AS voiced_character_name,
        MIN(n.name) AS voicing_actress,

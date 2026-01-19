@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(t.title) AS american_vhs_movie
 FROM company_type AS ct,
      info_type AS it,

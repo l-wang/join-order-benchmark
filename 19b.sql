@@ -1,3 +1,4 @@
+EXPLAIN ANALYZE
 SELECT MIN(n.name) AS voicing_actress,
        MIN(t.title) AS kung_fu_panda
 FROM aka_name AS an,
