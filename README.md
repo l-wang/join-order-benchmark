@@ -1,5 +1,68 @@
 # Join Order Benchmark
 
+> **Note:** This repo is forked from the original [Join Order Benchmark](https://github.com/gregrahn/join-order-benchmark). The data sources referenced in the original README are no longer accessible. See the updated setup instructions below.
+
+## Quick Start
+
+### 1. Download the data
+
+The IMDB data can be downloaded from CedarDB's mirror:
+[https://cedardb.com/docs/example_datasets/job](https://cedardb.com/docs/example_datasets/job)
+
+```sh
+mkdir data && cd data
+curl -OL https://bonsai.cedardb.com/job/imdb.tgz
+tar -zxvf imdb.tgz
+cd ..
+```
+
+### 2. Setup the database
+
+Use `setup.sh` to create and populate the database:
+
+```sh
+# Without join stats
+./setup.sh
+
+# With explicit join stats (CREATE STATISTICS for joins) - recommended
+./setup.sh -s explicit
+
+# With implicit join stats (FK constraints + multi-column stats)
+./setup.sh -s implicit
+```
+
+> Results should be similar between `explicit` and `implicit` modes. If you just want to test with join stats, `explicit` is the more straightforward choice.
+
+Options:
+- `-d <dbname>` - database name (default: `imdb`)
+- `-s <mode>` - join stats mode: `none`, `implicit`, or `explicit` (default: `none`)
+
+### 3. Run benchmark queries
+
+```sh
+./run_queries.sh -o <output_dir> -n <on|off>
+```
+
+Options:
+- `-o <dir>` - output directory for EXPLAIN ANALYZE results (default: `explain_results`)
+- `-n <on|off>` - enable or disable nested loop joins via `enable_nestloop` GUC (default: `on`)
+
+Example:
+```sh
+./run_queries.sh -o explain_results_run_0 -n on
+```
+
+### Tips for benchmarking
+
+For cold runs, restart the database and clear system caches before each run:
+```sh
+pg_ctl stop && sync && purge && pg_ctl start
+```
+
+---
+
+## Original README
+
 This package contains the **Join Order Benchmark** (JOB) queries from:  
 "How Good Are Query Optimizers, Really?"  
 by Viktor Leis, Andrey Gubichev, Atans Mirchev, Peter Boncz, Alfons Kemper, Thomas Neumann  
